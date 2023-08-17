@@ -3,7 +3,31 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
-    "cypress": "^6.3.0"
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "babel-jest": "^29.6.2",
+    "cypress": "^6.3.0",
+    "jest-plugin-context": "^2.9.0"
+  },
+  "dependencies": {
+    "jest": "^29.6.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "jest-plugin-context/setup"
+    ],
+    "transform": {
+      "\\.[jt]sx?$": "babel-jest"
+    }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
