@@ -12,12 +12,32 @@ describe('로또 객체 인터페이스 테스트', ()=> {
 
     it('번호의 개수가 다른 경우 에러를 발생한다.', ()=> {
         const shortNumbers = [1,2,3,4,5];
-        expect(new Lotto(shortNumbers)).toThrow(Error);
+        try {
+            new Lotto(shortNumbers);
+            throw Error('should not get here')
+        } catch(e) {
+            expect(e.message).toBe('invalid lotto number length')
+        }
     })
 
-    it('정해진 범위의 번호만 입력할 수 있다.', ()=> {
+    it('범위를 벗어난 번호를 입력하면 에러를 발생한다.', ()=> {
         const largetNumbers = [50,60,70,80,90,100];
-        expect(new Lotto(largetNumbers)).toThrow(Error);
+        try {
+            new Lotto(largetNumbers);
+            throw Error('should not get here')
+        } catch(e) {
+            expect(e.message).toBe('invalid lotto number range')
+        }
+    })
+
+    it('중복된 로또 번호를 가지면 에러를 발생한다.', ()=> {
+        const duplicatedNumbers = [1, 1, 2, 3, 4, 5];
+        try {
+            new Lotto(duplicatedNumbers);
+            throw Error('should not get here')
+        } catch(e) {
+            expect(e.message).toBe('lotto numbers are not unique')
+        }
     })
 
     it('당첨 등수를 알 수 있다.(1)', ()=> {
