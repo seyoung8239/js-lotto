@@ -15,7 +15,8 @@
     "jest-plugin-context": "^2.9.0"
   },
   "dependencies": {
-    "jest": "^29.6.2"
+    "jest": "^29.6.2",
+    "readline-sync": "^1.4.10"
   },
   "jest": {
     "setupFiles": [
